@@ -10,6 +10,8 @@ public class Philosophers extends Thread {
 
     public static PhilosopherStatus[] status = new PhilosopherStatus[5];
 
+    public static boolean causeDeadlock = false;
+
     private final static int size = 5;
 
     private final static int roomSize = 4;
@@ -101,7 +103,9 @@ public class Philosophers extends Thread {
                 status[number] = PhilosopherStatus.WAITING;
                 emitUpdate();
                 fork[(number+1)%size].release();
-                fork[number].release();
+                if(!causeDeadlock){
+                    fork[number].release();
+                }
                 room.release();
             } catch (InterruptedException e) {
                 e.printStackTrace();
