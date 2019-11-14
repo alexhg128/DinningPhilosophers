@@ -40,10 +40,8 @@ public class Philosophers extends Thread {
     }
 
     public static void resetForks() {
-        for(Semaphore s : fork) {
-            s.release();
-        }
-        room.release(roomSize);
+        room = new Semaphore(roomSize);
+        initialized = false;
     }
 
     public void setNumber(int number){
@@ -116,9 +114,11 @@ public class Philosophers extends Thread {
             emitUpdate();
             this.think();
             try {
-                status[number] = PhilosopherStatus.WAITING;
+                status[number] = PhilosopherStatus.ABSENT;
                 emitUpdate();
                 room.acquire();
+                status[number] = PhilosopherStatus.WAITING;
+                emitUpdate();
                 fork[number].acquire();
                 forkStatus[number] = true;
                 emitUpdate();
