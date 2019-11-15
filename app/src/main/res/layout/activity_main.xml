@@ -7,12 +7,13 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="406dp"
-        android:layout_height="450dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="265dp"
+        android:id="@+id/table"
+        android:layout_width="368dp"
+        android:layout_height="368dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="308dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
